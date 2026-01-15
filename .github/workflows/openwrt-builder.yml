@@ -35,7 +35,16 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
-
+      with:
+        # 这一步会删除大量预装的软件（Android SDK, .NET, Haskell等）
+        tool-cache: true
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        docker-images: true
+        swap-storage: false
+      
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
