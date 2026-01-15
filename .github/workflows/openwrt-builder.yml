@@ -33,17 +33,19 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@main
+    - name: Free Disk Space (Easy Mode)
+      uses: jlumbroso/free-disk-space@main
       with:
-        # 这一步会删除大量预装的软件（Android SDK, .NET, Haskell等）
         tool-cache: true
         android: true
         dotnet: true
         haskell: true
         large-packages: true
         docker-images: true
-        swap-storage: false
+        swap-storage: true
+    
+    - name: Checkout
+      uses: actions/checkout@main
       
     - name: Initialization environment
       env:
